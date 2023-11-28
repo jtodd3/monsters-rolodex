@@ -14,14 +14,14 @@ function App() {
     .then((users) => setMonsters(users))
   }, [])
 
-  const filteredMonsters = monsters.filter((monster) => monster.name.toLowerCase().includes(search.toLowerCase()));
+  const filteredMonsters = monsters.filter((monster) => monster.name.toLowerCase().includes(search));
 
-  const onSearchChange = (e) => setSearch(e.target.value);
+  const onSearchChange = (e) => setSearch(e.target.value.toLowerCase());
 
     return (
       <div className='App'>
         <h1 className='app-title'>Monsters Rolodex</h1>
-        <SearchBox value={search} onChange={onSearchChange} className="monsters-search-box" placeholder="Search monsters" />
+        <SearchBox onChange={onSearchChange} className="monsters-search-box" placeholder="Search monsters" />
         <CardList monsters={filteredMonsters} />
       </div>
     )
